@@ -9,7 +9,10 @@ ESX = exports["es_extended"]:getSharedObject()
             Inventory.RemoveItem(source, Config.Weed.WeedHarvestItem, 2)
             Inventory.AddItem(source, Config.Weed.WeedProcessItem, 1)
 		else
-            TriggerClientEvent('ox_lib:notify', -1, { title = 'Drug System', icon= 'ban', position = 'top', description = Config.Progress.DontHaveResources})
+            TriggerClientEvent("ox_lib:notify", source, {
+                description = Config.Progress.DontHaveResources,
+                type = "error"
+            })
         end
     end)
 
@@ -24,7 +27,10 @@ ESX = exports["es_extended"]:getSharedObject()
                 Inventory.RemoveItem(source, Config.Weed.WeedProcess, 1)
                 Inventory.AddItem(source, Config.Weed.JointItem, 1)
             else
-                TriggerClientEvent('ox_lib:notify', -1, { title = 'Drug System', icon= 'ban', position = 'top', description = Config.Progress.DontHaveResources})
+                TriggerClientEvent("ox_lib:notify", source, {
+                    description = Config.Progress.DontHaveResources,
+                    type = "error"
+                })
             end
         end)
 
@@ -36,7 +42,10 @@ ESX = exports["es_extended"]:getSharedObject()
 		if Inventory.CanCarryItem(source, Config.Coke.CokeHarvestItem, 2 ) then
             Inventory.AddItem(source, Config.Coke.CokeHarvestItem, 2)
 		else
-            TriggerClientEvent('ox_lib:notify', -1, { title = 'Drug System', icon= 'ban', position = 'top', description = Config.Progress.DontHaveStorage})
+            TriggerClientEvent("ox_lib:notify", source, {
+                description = Config.Progress.DontHaveStorage,
+                type = "error"
+            })
         end
     end)
 
@@ -48,7 +57,10 @@ ESX = exports["es_extended"]:getSharedObject()
             if Inventory.CanCarryItem(source, Config.Weed.WeedHarvestItem, 2 ) then
                 Inventory.AddItem(source, Config.Weed.WeedHarvestItem, 2)
             else
-                TriggerClientEvent('ox_lib:notify', -1, { title = 'Drug System', icon= 'ban', position = 'top', description = Config.Progress.DontHaveStorage})
+                TriggerClientEvent("ox_lib:notify", source, {
+                    description = Config.Progress.DontHaveStorage,
+                    type = "error"
+                })
             end
         end)
 
@@ -63,7 +75,10 @@ lib.callback.register('sm:cokeprocess', function()
             Inventory.RemoveItem(source, Config.Coke.CokeProcess, 1)
             Inventory.AddItem(source, Config.Coke.CokeProcessItem, 1)
     else
-        TriggerClientEvent('ox_lib:notify', -1, { title = 'Drug System', icon= 'ban', position = 'top', description = Config.Progress.DontHaveResources})
+        TriggerClientEvent("ox_lib:notify", source, {
+            description = Config.Progress.DontHaveStorage,
+            type = "error"
+        })
     end
 end)
 
@@ -78,10 +93,16 @@ AddEventHandler("sm_drugslabs:buycoke", function(data)
                 Inventory.AddItem(source, Config.Coke.CokeCard, 1)
                 Inventory.RemoveItem(source, 'money', 10000)
         else
-            TriggerClientEvent('ox_lib:notify', -1, { title = 'Drug System', icon= 'ban', position = 'top', description = Config.Progress.DontHaveStorage})
+            TriggerClientEvent("ox_lib:notify", source, {
+                description = Config.Progress.DontHaveStorage,
+                type = "error"
+            })
         end
     else
-        TriggerClientEvent('ox_lib:notify', -1, { title = 'Drug System', icon= 'ban', position = 'top', description = Config.Progress.DontHaveResources})
+        TriggerClientEvent("ox_lib:notify", source, {
+            description = Config.Progress.DontHaveResources,
+            type = "error"
+        })
     end
 end)
 
@@ -98,10 +119,16 @@ AddEventHandler("sm_drugslabs:buyweed", function(data)
                 Inventory.AddItem(source, Config.Weed.WeedCard, 1)
                 Inventory.RemoveItem(source, 'money', 10000)
         else
-            TriggerClientEvent('ox_lib:notify', -1, { title = 'Drug System', icon= 'ban', position = 'top', description = Config.Progress.DontHaveStorage})
+            TriggerClientEvent("ox_lib:notify", source, {
+                description = Config.Progress.DontHaveStorage,
+                type = "error"
+            })
         end
     else
-        TriggerClientEvent('ox_lib:notify', -1, { title = 'Drug System', icon= 'ban', position = 'top', description = Config.Progress.DontHaveResources})
+        TriggerClientEvent("ox_lib:notify", source, {
+            description = Config.Progress.DontHaveResources,
+            type = "error"
+        })
     end
 end)
 
@@ -118,10 +145,16 @@ AddEventHandler("sm_drugslabs:buybag", function(data)
                 Inventory.AddItem(source, Config.Coke.CokeProcess, 5)
                 Inventory.RemoveItem(source, 'money', 50)
         else
-            TriggerClientEvent('ox_lib:notify', -1, { title = 'Drug System', icon= 'ban', position = 'top', description = Config.Progress.DontHaveStorage})
+            TriggerClientEvent("ox_lib:notify", source, {
+                description = Config.Progress.DontHaveStorage,
+                type = "error"
+            })
         end
     else
-        TriggerClientEvent('ox_lib:notify', -1, { title = 'Drug System', icon= 'ban', position = 'top', description = Config.Progress.DontHaveResources})
+        TriggerClientEvent("ox_lib:notify", source, {
+            description = Config.Progress.DontHaveResources,
+            type = "error"
+        })
     end
 end)
 
@@ -138,9 +171,15 @@ AddEventHandler("sm_drugslabs:buypaper", function(data)
                 Inventory.AddItem(source, Config.Weed.WeedProcess, 5)
                 Inventory.RemoveItem(source, 'money', 50)
         else
-            TriggerClientEvent('ox_lib:notify', -1, { title = 'Drug System', icon= 'ban', position = 'top', description = Config.Progress.DontHaveStorage})
+            TriggerClientEvent("ox_lib:notify", source, {
+                description = Config.Progress.DontHaveStorage,
+                type = "error"
+            })
         end
     else
-        TriggerClientEvent('ox_lib:notify', -1, { title = 'Drug System', icon= 'ban', position = 'top', description = Config.Progress.DontHaveResources})
+        TriggerClientEvent("ox_lib:notify", source, {
+            description = Config.Progress.DontHaveResources,
+            type = "error"
+        })
     end
 end)
